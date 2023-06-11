@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { useForm, useField, useAllFormFields, reduceFieldsToValues, useFormFields } from "payload/components/forms";
+import { useForm, useField, useAllFormFields, useFormFields } from "payload/components/forms";
 
 const ArrayMapInput = (props) => {
   
   const { path, custom } = props;
   
   const fromField = custom.fromField
-  const arrayField = custom.arrayField
+  const toField = custom.toField
   
   const [rows, setRows] = useState("[]");
   
@@ -22,7 +22,7 @@ const ArrayMapInput = (props) => {
 
   useEffect(() => {
     
-    if( textField?.value !== "" && textField?.value !== undefined ){    
+    if( textField?.value !== undefined ){    
       const rowsFromField = String(textField.value).split('')
       setRows(JSON.stringify(rowsFromField))
     }
@@ -30,30 +30,17 @@ const ArrayMapInput = (props) => {
 
   useEffect(() => {
        
-       const rowsFromField = JSON.parse(rows)
-       console.log('########################################')
-       console.log(rowsFromField)
-       console.log(fields)
+      const rowsFromField = JSON.parse(rows)
       
-       const newState = { ...fields, [arrayField] : {
-           ...fields[arrayField],
-           initialValue: rowsFromField.length,
-           value: rowsFromField.length,
-           valid: true,
-           rows: rowsFromField.map(( row, i) => ({
-              initialValue: row,
-              value: row,
-              valid: true,
-            })),
-
-           disableFormData: true,
-       }};
+      const newState = { ...fields, [toField] : {
+        ...fields[toField],
+        value: rowsFromField.length,
+      }};
+      
+      console.log("REPLACE STATE")
+      replaceState(newState);
        
-       console.log("REPLACE STATE")
-
-       replaceState(newState);
-       
-  }, [rows])
+  }, [textField])
 
   return <></>
 
