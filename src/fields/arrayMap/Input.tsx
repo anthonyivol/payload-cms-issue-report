@@ -34,7 +34,7 @@ const ArrayMapInput = (props) => {
        console.log('########################################')
        console.log(rowsFromField)
        console.log(fields)
-
+      
        const newState = { ...fields, [arrayField] : {
            ...fields[arrayField],
            initialValue: rowsFromField.length,
@@ -49,22 +49,6 @@ const ArrayMapInput = (props) => {
            disableFormData: true,
        }};
        
-       // console.log(rowsFromField.length)
-       
-       // Create an array for every variation
-       // and loop over it
-       rowsFromField.forEach(( row, i) => {
-         // Assign the listAmounts array field itself a value
-         // equal to an integer of how many rowsFromField it should have
-         newState[`${arrayField}.${i}.name`] = {
-           initialValue: row,
-           value: row,
-           valid: true,
-         };
- 
-       });
- 
-       console.log(newState)
        console.log("REPLACE STATE")
 
        replaceState(newState);
