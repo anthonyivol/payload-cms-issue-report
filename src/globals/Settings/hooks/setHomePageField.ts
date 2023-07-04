@@ -10,15 +10,15 @@ const setHomePageField:AfterChangeHook = async ({ doc, req: { payload } }) => {
     
     await payload.update({
         collection : 'pages',
-        where: { homePage: { equals: true } },
-        data: { homePage: false }
+        where: { isHome: { equals: true } },
+        data: { isHome: false }
     })
 
     await payload.update({
         collection: 'pages',
         id : homePageID,
         data : {
-            homePage : true
+            isHome : true
         }
     })
     

@@ -1,7 +1,6 @@
 import { CollectionConfig } from 'payload/types';
-import home from '../fields/homePage';
+import isHome from '../fields/isHome';
 
-// Example Collection - For reference only, this must be added to payload.config.ts to be used.
 const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
@@ -12,7 +11,7 @@ const Pages: CollectionConfig = {
       name: 'title',
       type: 'text',
     },
-    home
+    isHome
   ],
 }
 
