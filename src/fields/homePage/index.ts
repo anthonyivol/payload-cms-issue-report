@@ -7,8 +7,8 @@ const home: Field = {
   type: 'checkbox',
   defaultValue: false,
   admin: {
+    position: 'sidebar',
     readOnly: true,
-    hidden: true,
     components: {
       Cell,
     },
