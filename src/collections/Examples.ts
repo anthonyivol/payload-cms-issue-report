@@ -4,13 +4,20 @@ import { CollectionConfig } from 'payload/types';
 const Examples: CollectionConfig = {
   slug: 'examples',
   admin: {
-    useAsTitle: 'someField',
+    useAsTitle: 'title',
   },
   fields: [
     {
-      name: 'someField',
+      name: 'title',
       type: 'text',
     },
+    {
+      name: 'publishedDate',
+      type: 'date',
+      admin: {
+        position: 'sidebar',
+      },
+    }
   ],
 }
 
